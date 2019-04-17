@@ -1,4 +1,10 @@
+<!-- 商品列表页面每个商品展示位 -->
+
 <article class="product">
+  <% if product.quantity == 0 %>
+    <aside class="soldout">Sold Out</aside>
+  <% end %>
+
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
@@ -7,6 +13,9 @@
   </header>
   <p class="description">
     <%= product.description %>
+  </p>
+  <p class="description">
+    <b>Quantity Remaining: <%= product.quantity %></b>
   </p>
   <footer class="actions">
     <%= button_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary' , method: :post do %>
