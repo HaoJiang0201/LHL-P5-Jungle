@@ -1,0 +1,22 @@
+<!-- 订单页面每个物品的展示位 -->
+
+<tr>
+  <td>
+    <%= image_tag product.image.tiny %>
+  </td>
+  <td>
+    <h4><%= product.name %></h4>
+    <br>
+    <p><%= product.description %></p>
+    <br>
+  </td>
+  <td>
+    <%= product.price %>
+  </td>
+  <td>
+    <%= quantity %>
+  </td>
+  <td>
+    <%= product.price * quantity %>
+  </td>
+</tr>

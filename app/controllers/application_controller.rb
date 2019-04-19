@@ -29,6 +29,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
+  def enhanced_order
+    @enhanced_order ||= Product.where(id: order.keys).map {|product| { product:product, quantity: order[product.id.to_s] } }
+  end
+  helper_method :enhanced_order
+
 
   def update_cart(new_cart)
     cookies[:cart] = {

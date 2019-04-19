@@ -2,6 +2,19 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @user = User.find_by_email(@order.email)
+    @line_items = @order.line_items.order(created_at: :desc)
+    # @products = []
+    @enhanced_orders = []
+    @line_items.each do |line_item|
+      product = Product.find(line_item[:product_id])
+      # @products.push(product)
+      enhanced_order = {}
+      enhanced_order[:product] = product
+      enhanced_order[:quantity] = line_item[:quantity]
+      @enhanced_orders.push(enhanced_order)
+    end
+    
   end
 
   def create
