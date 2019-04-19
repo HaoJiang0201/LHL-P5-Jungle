@@ -16,7 +16,7 @@
 
       <div class="col-sm-8">
 
-        <h4 style="color: grey"><b>Product Introduction:</b></h4><br>
+        <h4 style="color: grey;"><b>Product Introduction:</b></h4><br>
         
         <dl class="dl-horizontal">
           <dt>Name</dt>
@@ -31,7 +31,7 @@
 
         <hr>
 
-        <h4 style="color: grey"><b>Product Reviews:</b></h4><br>
+        <h4 style="color: grey;"><b>Product Reviews:</b></h4><br>
         <dl class="dl-horizontal">
           <% @enhanced_reviews.each do |review| %>
             <dt>Rating</dt>
@@ -43,25 +43,25 @@
             <br>
           <% end %>
         </dl>
-
+        <hr>
+        <h4 style="color: grey;"><b>Write A Review: </b></h4>
+        <dl class="dl-horizontal">
+        <%= form_for :review, url: "/products/#{params[:id]}/reviews" do |f| %>
+          <dt><%= label_tag :Rating%></dt>
+          <dd><%= f.select :rating, [1, 2, 3, 4, 5]%><br></dd>
+          <dt><%= label_tag :comment%><br></dt>
+          <dd><%= f.text_area :description %><br></dd>
+          <dd><%= f.submit "Submit", class: "btn btn-default"%></dd>
+        <%end%>
+        </dl>
       </div>
     </div>
 
+    
+
   </article>
 
-  <h2> Write A Review</h2>
-
-  <%= form_for :review, url: "/products/#{params[:id]}/reviews" do |f| %>
-      <div>
-          Product ID: <%= params[:id] %> ------
-          Usert ID: <%= current_user.id %>> -------
-          <%= label_tag :Rating%>
-          <%= f.select :rating, [1, 2, 3, 4, 5]%>
-          <%= label_tag :description%>
-          <%= f.text_field :description %>
-          <%= f.submit "Submit", class: "btn btn-default"%>
-      </div>
-  <%end%>
-  <br><br>
+  
+  <br><br><br>
 
 </section>
