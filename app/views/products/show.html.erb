@@ -49,4 +49,19 @@
 
   </article>
 
+  <h2> Write A Review</h2>
+
+  <%= form_for :review, url: "/products/#{params[:id]}/reviews" do |f| %>
+      <div>
+          Product ID: <%= params[:id] %> ------
+          Usert ID: <%= current_user.id %>> -------
+          <%= label_tag :Rating%>
+          <%= f.select :rating, [1, 2, 3, 4, 5]%>
+          <%= label_tag :description%>
+          <%= f.text_field :description %>
+          <%= f.submit "Submit", class: "btn btn-default"%>
+      </div>
+  <%end%>
+  <br><br>
+
 </section>

@@ -4,15 +4,8 @@ class CartsController < ApplicationController
   end
 
   def add_item
-    # puts ">>> HJ: #{params}"
-    # quantityRemain = params[:product_quantity]
-    # quantityOrder = params[:order_quantity]
-    # if quantityOrder > quantityRemain
-    #   puts ">>> HJ: Not enough quantity! #{quantityOrder} > #{quantityRemain}"
-    # else
     product_id = params[:product_id].to_s
     modify_cart_delta(product_id, +1)
-    # end
     redirect_to :back
   end
 
