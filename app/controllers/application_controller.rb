@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart
 
+  def empty_cart_info
+    @empty_cart_info = "Oh, no! Your cart is empty, let's go finding something to fill it!"
+  end
+  helper_method :empty_cart_info
+
   def enhanced_cart
     @enhanced_cart ||= Product.where(id: cart.keys).map {|product| { product:product, quantity: cart[product.id.to_s] } }
   end
