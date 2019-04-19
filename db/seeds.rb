@@ -21,6 +21,41 @@ end
 
 # Let's do this ...
 
+## PRODUCTS
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+# reviews.create!({
+#   product_id:  11,
+#   user_id: 6,
+#   description: " Amazing chair! As an IT guy, you will fall in love with it.",
+#   rating: 5
+# })
+
+review1 = Review.create(
+  product_id: 11,
+  user_id: 6,
+  description: "Amazing chair! As an IT guy, you will fall in love with it.",
+  rating: 5
+)
+
+review2 = Review.create(
+  product_id: 6,
+  user_id: 8,
+  description: "OMG! This is horrible! Don't by it...",
+  rating: 1
+)
+
+review3 = Review.create(
+  product_id: 6,
+  user_id: 8,
+  description: "OMG! This is horrible! Don't by it...",
+  rating: 1
+)
+
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
