@@ -38,8 +38,12 @@
 
             <ul class="dropdown-menu">
               <li><%= link_to 'Dashboard', [:admin, :root] %></li>
-              <li><%= link_to 'Products',  [:admin, :products] %></li>
-              <li><%= link_to 'Categories',  [:admin, :categories] %></li>
+
+              <% if current_user.name == Rails.configuration.stripe[:admin_user] %>
+                <li><%= link_to 'Products',  [:admin, :products] %></li>
+                <li><%= link_to 'Categories',  [:admin, :categories] %></li>
+              <% end %>
+
               <li style="background: lightblue; text-decoration: underline;"><%= link_to "Logout", '/logout' %></li>
             </ul>
 
